@@ -1,6 +1,6 @@
-// import ContactForm from "./ContactForm/ContactForm";
+import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
-// import SearchBox from "./SearchBox/SearchBox";
+import SearchBox from "./SearchBox/SearchBox";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,14 +16,12 @@ export default function App() {
 
   return (
     <>
-      <div>
-        {loading && <p>Loading...</p>}
-        {error && <p>Oops, ERROR</p>}
-        <ContactList />
-      </div>
-      {/* <ContactForm /> */}
-      {/* <SearchBox /> */}
-      {/* <ContactList /> */}
+      {loading && <p>Loading...</p>}
+      {error && <p>Oops, ERROR</p>}
+
+      <ContactForm />
+      <SearchBox />
+      <ContactList />
     </>
   );
 }
