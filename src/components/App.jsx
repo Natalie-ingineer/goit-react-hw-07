@@ -4,7 +4,7 @@ import ContactList from "./ContactList/ContactList";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../redux/contactsSlice";
+import { fetchContacts } from "../redux/operations";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function App() {
       <div>
         {loading && <p>Loading...</p>}
         {error && <p>Oops, ERROR</p>}
-        {items.lengs > 0 && <ContactList />}
+        <ContactList />
       </div>
       {/* <ContactForm /> */}
       {/* <SearchBox /> */}
