@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchContacts = () => async () => {
+export const fetchContacts = () => async (dispatch) => {
   try {
+    dispatch(fetchContactsPending());
     const response = await axios.get(
       "https://65d8667dc96fbb24c1bb6f49.mockapi.io/contacts"
     );
-  } catch (error) {}
+    dispatch(fetchContactsSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchContactsError(error.message));
+  }
 };
 
 const addContact = () => {};
@@ -26,9 +30,18 @@ const contactsSlice = createSlice({
     },
   },
   reducers: {
-    fetchContactsPending() {},
-    fetchContactsSuccess() {},
-    fetchContactsError() {},
+    fetchContactsPending(state) {
+      state.loading = true;
+    },
+    fetchContactsSuccess(state, action) {
+      state.loading = false;
+      state.error = null;
+      state.items = [...action.payload];
+    },
+    fetchContactsError(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
