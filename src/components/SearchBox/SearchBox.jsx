@@ -6,9 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 export default function SearchBox() {
   const usernameFieldIdsearch = useId();
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filters.filters.name);
+  const filter = useSelector((state) => state.filters.name);
   console.log(filter);
-
+  // export const selectVisibleContacts = createSelector(
+  //   [selectContacts, selectFilter],
+  //   (contacts, filter) => {
+  //     return contacts.filter((contact) =>
+  //       contact.name.toLowerCase().includes(filter.toLowerCase())
+  //     );
+  //   }
+  // );
   return (
     <div className={css.btnWrap}>
       <label className={css.description} htmlFor={usernameFieldIdsearch}>

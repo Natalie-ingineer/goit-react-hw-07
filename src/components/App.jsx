@@ -20,10 +20,9 @@ export default function App() {
     <>
       {loading && <p>Loading...</p>}
       {error && <p>Oops, ERROR</p>}
+      {items.length > 0 && JSON.stringify(items, null, 2)}
 
-      <ContactForm>
-        {items.length > 0 && JSON.stringify(items, null, 2)}
-      </ContactForm>
+      <ContactForm></ContactForm>
       <SearchBox />
       <ContactList />
     </>
