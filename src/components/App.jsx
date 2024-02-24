@@ -8,7 +8,9 @@ import { fetchContacts } from "../redux/operations";
 
 export default function App() {
   const dispatch = useDispatch();
-  const { items, loading, error } = useSelector((state) => state.contacts);
+  const { items, loading, error } = useSelector(
+    (state) => state.contacts.contacts
+  );
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -19,7 +21,9 @@ export default function App() {
       {loading && <p>Loading...</p>}
       {error && <p>Oops, ERROR</p>}
 
-      <ContactForm />
+      <ContactForm>
+        {items.length > 0 && JSON.stringify(items, null, 2)}
+      </ContactForm>
       <SearchBox />
       <ContactList />
     </>
