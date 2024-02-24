@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import css from "./ContactForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/operations";
+import { selectContacts } from "../../redux/selectors";
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -20,12 +21,12 @@ export default function ContactForm() {
   const usernameFieldId = useId();
   const numberFieldId = useId();
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contacts.items);
+  const contacts = useSelector(selectContacts);
   console.log(contacts);
 
   const handleSubmit = (event) => {
     const form = event.target;
-    dispatch(addContact(event.target));
+    dispatch(addContact(event.target.elements.text.value));
     form.reset();
   };
 
