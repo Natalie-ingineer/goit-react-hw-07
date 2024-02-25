@@ -4,11 +4,9 @@ import { addContact, deleteContact, fetchContacts } from "./operations";
 const contactsSlice = createSlice({
   name: "contacts",
   initialState: {
-    contacts: {
-      items: [],
-      loading: false,
-      error: null,
-    },
+    items: [],
+    loading: false,
+    error: null,
   },
   extraReducers: (builder) =>
     builder
