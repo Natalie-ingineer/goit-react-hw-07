@@ -25,11 +25,14 @@ export default function App() {
 
       {loading && <p>Loading...</p>}
       {error && <p>Oops, ERROR</p>}
-      <ContactForm>
-        {items.length > 0 && JSON.stringify(items, null, 2)}
-      </ContactForm>
-      <SearchBox />
-      <ContactList />
+
+      {items.length > 0 && JSON.stringify(items, null, 2) && (
+        <>
+          <ContactForm />
+          <SearchBox />
+          <ContactList />
+        </>
+      )}
     </>
   );
 }
