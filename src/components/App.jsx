@@ -11,7 +11,6 @@ export default function App() {
   const dispatch = useDispatch();
 
   const items = useSelector(selectContacts);
-  console.log(items);
 
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -23,9 +22,9 @@ export default function App() {
   return (
     <>
       <h1>Phonebook</h1>
+
       {loading && <p>Loading...</p>}
       {error && <p>Oops, ERROR</p>}
-
       <ContactForm>
         {items.length > 0 && JSON.stringify(items, null, 2)}
       </ContactForm>

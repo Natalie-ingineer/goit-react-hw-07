@@ -23,7 +23,6 @@ export default function ContactForm() {
   const dispatch = useDispatch();
 
   const items = useSelector(selectContacts);
-  console.log(items);
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(addContact(values));
@@ -33,7 +32,6 @@ export default function ContactForm() {
   return (
     <Formik
       initialValues={{ name: "", phone: "" }}
-      // initialValues={contacts}
       validationSchema={userSchema}
       onSubmit={handleSubmit}
     >

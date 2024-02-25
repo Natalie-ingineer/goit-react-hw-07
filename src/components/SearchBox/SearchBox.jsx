@@ -8,7 +8,6 @@ export default function SearchBox() {
   const usernameFieldIdsearch = useId();
   const dispatch = useDispatch();
   const filter = useSelector(selectStatusFilter);
-  console.log(filter);
 
   return (
     <div className={css.btnWrap}>

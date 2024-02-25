@@ -1,7 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 export const selectContacts = (state) => state.contacts.items;
-console.log(selectContacts);
 
 export const selectLoading = (state) => state.contacts.loading;
 
@@ -17,4 +16,3 @@ export const selectVisibleContacts = createSelector(
     );
   }
 );
-console.log(selectVisibleContacts);
