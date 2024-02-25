@@ -21,17 +21,9 @@ export default function ContactForm() {
   const usernameFieldId = useId();
   const numberFieldId = useId();
   const dispatch = useDispatch();
-  // const { items } = useSelector((state) => state.contacts.contacts);
-  // console.log(items);
 
-  const items = useSelector((state) => state.contacts.items);
+  const items = useSelector(selectContacts);
   console.log(items);
-
-  // const handleSubmit = (event) => {
-  //   const form = event.target;
-  //   dispatch(addContact(event.target.value));
-  //   form.reset();
-  // };
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(addContact(values));

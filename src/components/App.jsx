@@ -10,7 +10,7 @@ import { selectContacts, selectLoading, selectError } from "../redux/selectors";
 export default function App() {
   const dispatch = useDispatch();
 
-  const items = useSelector((state) => state.contacts.items);
+  const items = useSelector(selectContacts);
   console.log(items);
 
   const loading = useSelector(selectLoading);
@@ -26,7 +26,9 @@ export default function App() {
       {loading && <p>Loading...</p>}
       {error && <p>Oops, ERROR</p>}
 
-      <ContactForm>{items && JSON.stringify(items, null, 2)}</ContactForm>
+      <ContactForm>
+        {items.length > 0 && JSON.stringify(items, null, 2)}
+      </ContactForm>
       <SearchBox />
       <ContactList />
     </>
