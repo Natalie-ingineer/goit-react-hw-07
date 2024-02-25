@@ -12,7 +12,7 @@ const userSchema = Yup.object().shape({
     .min(3, "Name must be at least 3 symb long")
     .max(50, "Name to long")
     .required("Please, fill in the field!"),
-  number: Yup.number()
+  phone: Yup.number()
     .min(0, "Number must be at least 3 symb long")
     .required("Please, fill in the field!"),
 });
@@ -21,13 +21,21 @@ export default function ContactForm() {
   const usernameFieldId = useId();
   const numberFieldId = useId();
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  console.log(contacts);
+  // const { items } = useSelector((state) => state.contacts.contacts);
+  // console.log(items);
 
-  const handleSubmit = (event) => {
-    const form = event.target;
-    dispatch(addContact(event.target.elements.text.value));
-    form.reset();
+  const items = useSelector((state) => state.contacts.items);
+  console.log(items);
+
+  // const handleSubmit = (event) => {
+  //   const form = event.target;
+  //   dispatch(addContact(event.target.value));
+  //   form.reset();
+  // };
+
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(addContact(values));
+    resetForm();
   };
 
   return (
@@ -52,15 +60,15 @@ export default function ContactForm() {
         </div>
         <div className={css.formWrap}>
           <label className={css.description} htmlFor={numberFieldId}>
-            Number
+            Phone
           </label>
           <Field
             className={css.fieldInput}
             type="number"
-            name="number"
+            name="phone"
             id={numberFieldId}
           ></Field>
-          <ErrorMessage className={css.error} name="number" component="span" />
+          <ErrorMessage className={css.error} name="phone" component="span" />
         </div>
         <button className={css.button} type="submit">
           Add user
