@@ -24,7 +24,7 @@ export default function App() {
       <h1>Phonebook</h1>
 
       {loading && <p>Loading...</p>}
-      {error && <p>Oops, ERROR</p>}
+      {error && <p className="notification">Oops, ERROR 😨</p>}
 
       {items.length > 0 && JSON.stringify(items, null, 2) && (
         <>
